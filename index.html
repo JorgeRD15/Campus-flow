@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#6257e8" />
+    <title>Campus Flow — Planner</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <style>#modalBackdrop[hidden]{display:none!important}.edit-task{border:0;background:transparent;color:#6357e8;font:inherit;font-size:11px;font-weight:700;cursor:pointer;padding:3px 0}.edit-task:hover{text-decoration:underline}</style>
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" id="sidebar">
+        <a class="brand" href="#dashboard"><span class="brand-mark">✦</span><span>campus flow</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <button class="nav-item active" data-page="dashboard"><span>⌂</span> Overview</button>
+          <button class="nav-item" data-page="calendar"><span>▦</span> Calendar</button>
+          <button class="nav-item" data-page="study"><span>◒</span> Study planner</button>
+          <button class="nav-item" data-page="tasks"><span>✓</span> Tasks</button>
+          <button class="nav-item" data-page="exams"><span>✎</span> Exams</button>
+        </nav>
+        <div class="side-label">CALENDARS</div>
+        <div id="categoryList" class="category-list"></div>
+        <button class="text-button add-category" id="addCategoryBtn">+ Add category</button>
+        <div class="sidebar-bottom"><button class="nav-item" data-page="settings"><span>⚙</span> Settings</button></div>
+      </aside>
+      <main class="main-content">
+        <header class="topbar">
+          <button class="mobile-menu icon-button" id="menuBtn" aria-label="Open navigation">☰</button>
+          <div class="mobile-brand">✦</div>
+          <div class="top-actions">
+            <button class="icon-button" id="notifyBtn" aria-label="View reminders">♧<i></i></button>
+            <button class="avatar" aria-label="Profile">JS</button>
+          </div>
+        </header>
+        <section id="dashboard" class="page active"></section>
+        <section id="calendar" class="page"></section>
+        <section id="study" class="page"></section>
+        <section id="tasks" class="page"></section>
+        <section id="exams" class="page"></section>
+        <section id="settings" class="page"></section>
+      </main>
+    </div>
+    <div class="modal-backdrop" id="modalBackdrop" hidden onclick="if(event.target===this)this.hidden=true">
+      <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div class="modal-header"><h2 id="modalTitle">Add event</h2><button type="button" class="icon-button close-modal" aria-label="Close" onclick="document.getElementById('modalBackdrop').hidden=true">×</button></div>
+        <form id="modalForm" novalidate></form>
+      </div>
+    </div>
+    <div class="toast" id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
